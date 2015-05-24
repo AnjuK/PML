@@ -128,9 +128,9 @@ modFitRF &lt;- train(classe ~ .,method=&quot;rf&quot;,data=training, trControl =
 ## Resampling results across tuning parameters:
 ## 
 ##   mtry  Accuracy   Kappa      Accuracy SD  Kappa SD   
-##    2    0.9911916  0.9888564  0.001602201  0.002027321
-##   27    0.9908280  0.9883966  0.001720273  0.002177335
-##   52    0.9853682  0.9814901  0.003915030  0.004951491
+##    2    0.9890803  0.9861863  0.001294339  0.001636097
+##   27    0.9889351  0.9860021  0.001445222  0.001830509
+##   52    0.9836939  0.9793711  0.003658924  0.004629641
 ## 
 ## Accuracy was used to select the optimal model using  the largest value.
 ## The final value used for the model was mtry = 2.</code></pre>
@@ -167,26 +167,26 @@ modFitGBM &lt;- train(classe ~ .,method=&quot;gbm&quot;,data=training, trControl
 ## 
 ## Resampling results across tuning parameters:
 ## 
-##   interaction.depth  n.trees  Accuracy   Kappa      Accuracy SD
-##   1                   50      0.7448508  0.6765328  0.009526148
-##   1                  100      0.8194670  0.7715155  0.008072527
-##   1                  150      0.8506968  0.8110590  0.007595156
-##   2                   50      0.8537543  0.8146559  0.008890734
-##   2                  100      0.9052206  0.8800695  0.007707069
-##   2                  150      0.9294618  0.9107437  0.005871991
-##   3                   50      0.8950300  0.8671029  0.008605982
-##   3                  100      0.9404537  0.9246596  0.004906168
-##   3                  150      0.9612728  0.9510055  0.001671073
+##   interaction.depth  n.trees  Accuracy   Kappa      Accuracy SD 
+##   1                   50      0.7505263  0.6837273  0.0082970804
+##   1                  100      0.8209944  0.7734622  0.0012672741
+##   1                  150      0.8510595  0.8115393  0.0035950838
+##   2                   50      0.8560817  0.8176858  0.0042615304
+##   2                  100      0.9078402  0.8833647  0.0018448007
+##   2                  150      0.9314991  0.9133141  0.0009384666
+##   3                   50      0.8988138  0.8718805  0.0063913785
+##   3                  100      0.9404537  0.9246529  0.0058229573
+##   3                  150      0.9607629  0.9503604  0.0011225890
 ##   Kappa SD   
-##   0.012240025
-##   0.010248887
-##   0.009629979
-##   0.011274521
-##   0.009759000
-##   0.007423663
-##   0.010893653
-##   0.006195724
-##   0.002115763
+##   0.010531024
+##   0.001565470
+##   0.004550463
+##   0.005410905
+##   0.002336780
+##   0.001190884
+##   0.008127597
+##   0.007371018
+##   0.001426359
 ## 
 ## Tuning parameter 'shrinkage' was held constant at a value of 0.1
 ## 
@@ -203,14 +203,14 @@ cgbm&lt;-confusionMatrix(validateGBM, validation$classe)</code></pre>
 <pre class="r"><code>##Random Forest Accuracy on Cross Validation Set
 crf$overall[1]</code></pre>
 <pre><code>##  Accuracy 
-## 0.9923534</code></pre>
+## 0.9921835</code></pre>
 <pre class="r"><code>##Boosting Model Accuracy
 cgbm$overall[1]</code></pre>
 <pre><code>##  Accuracy 
-## 0.9648258</code></pre>
+## 0.9624469</code></pre>
 <p>Based on the above we see that Random Forest model is a better fit for the given data. The out of sample error for Cross Validation Set is as below. As we see Out of Sample error is very small and is less than 1% indicating a very good fit.</p>
 <pre class="r"><code>(1 - ( sum( validateRF == validation$classe) / length(validateRF)))*100</code></pre>
-<pre><code>## [1] 0.7646559</code></pre>
+<pre><code>## [1] 0.7816483</code></pre>
 </div>
 <div id="test-set-prediction" class="section level2">
 <h2>Test Set Prediction</h2>
